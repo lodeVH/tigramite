@@ -1,0 +1,131 @@
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\PCMCI_for_CSTR.py:20: DeprecationWarning: bias and ddof have no effect and are deprecated
+  np.corrcoef(np.array([0.0, 1.0]), np.array([1.0, 2.0]), ddof=0)
+Loading csv: cstr_rapid_10.csv
+Auto tau_max from dynamics: ceil(5.0*263.51/36.0) = 37
+Data shape: T=985, N=8
+Lag range: tau_min=1, tau_max=37
+Variables: ['cA', 'cB', 'theta', 'thetaK', 'F', 'QK', 'cA0', 'theta0']
+Using CMIknn independence test
+
+Running PCMCI+ ...
+Rough runtime estimate: ~2611.5s (improves after repeated runs)
+
+##
+## Step 1: PC1 algorithm for selecting lagged conditions
+##
+
+Parameters:
+independence test = cmi_knn
+tau_min = 1
+tau_max = 37
+pc_alpha = [0.01]
+max_conds_dim = None
+max_combinations = 1
+
+
+PCMCI+ running [###-----------------] 42827.9s elapsed | ~   0.0s ETA
+## Resulting lagged parent (super)sets:
+
+    Variable cA has 1 link(s):
+        (cA -1): max_pval = 0.00200, |min_val| =  0.165
+
+    Variable cB has 1 link(s):
+        (cB -1): max_pval = 0.00200, |min_val| =  0.198
+
+    Variable theta has 1 link(s):
+        (theta -1): max_pval = 0.00200, |min_val| =  0.201
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): max_pval = 0.00200, |min_val| =  0.096
+
+    Variable F has 1 link(s):
+        (F -2): max_pval = 0.00798, |min_val| =  0.099
+
+    Variable QK has 1 link(s):
+        (QK -1): max_pval = 0.00200, |min_val| =  0.056
+
+    Variable cA0 has 1 link(s):
+        (cA0 -1): max_pval = 0.00399, |min_val| =  0.061
+
+    Variable theta0 has 1 link(s):
+        (cB -2): max_pval = 0.00998, |min_val| =  0.034
+
+##
+## Step 2: PC algorithm with contemp. conditions and MCI tests
+##
+
+Parameters:
+
+independence test = cmi_knn
+tau_min = 1
+tau_max = 37
+pc_alpha = 0.01
+contemp_collider_rule = majority
+conflict_resolution = True
+reset_lagged_links = False
+max_conds_dim = None
+max_conds_py = None
+max_conds_px = None
+max_conds_px_lagged = None
+fdr_method = none
+PCMCI+ running [######--------------] 42871.4s elapsed | ~   0.0s ETA
+## Significant links at alpha = 0.01:
+
+    Variable cA has 1 link(s):
+        (cA -1): pval = 0.00200 | val =  0.165
+
+    Variable cB has 1 link(s):
+        (cB -1): pval = 0.00200 | val =  0.198
+
+    Variable theta has 1 link(s):
+        (theta -1): pval = 0.00200 | val =  0.201
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): pval = 0.00200 | val =  0.198
+
+    Variable F has 1 link(s):
+        (F -2): pval = 0.00599 | val =  0.099
+
+    Variable QK has 1 link(s):
+        (QK -1): pval = 0.00200 | val =  0.104
+
+    Variable cA0 has 1 link(s):
+        (cA0 -1): pval = 0.00200 | val =  0.061
+
+    Variable theta0 has 0 link(s):
+                                                                                             PCMCI+ finished in 42872.3s.
+
+Post-filter: removed all parents into inputs: F, QK, cA0, theta0
+
+===== Significant links after cleaning (alpha = 0.010) =====
+
+## Significant links at alpha = 0.01:
+
+    Variable cA has 1 link(s):
+        (cA -1): pval = 0.00200 | val =  0.165
+
+    Variable cB has 1 link(s):
+        (cB -1): pval = 0.00200 | val =  0.198
+
+    Variable theta has 1 link(s):
+        (theta -1): pval = 0.00200 | val =  0.201
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): pval = 0.00200 | val =  0.198
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+Building graph for visualization ...
+Number of nodes: 8
+Number of edges: 4
+Significant link table saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph_links.csv
+Graph structure saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.graphml
+
+Graph saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.png
+Done.

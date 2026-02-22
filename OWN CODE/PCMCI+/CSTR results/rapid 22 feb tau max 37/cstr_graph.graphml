@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d1" for="edge" attr.name="lag" attr.type="long" />
+  <key id="d0" for="edge" attr.name="weight" attr.type="float" />
+  <graph edgedefault="directed">
+    <node id="cA" />
+    <node id="cB" />
+    <node id="theta" />
+    <node id="thetaK" />
+    <node id="F" />
+    <node id="QK" />
+    <node id="cA0" />
+    <node id="theta0" />
+    <edge source="cA" target="cA">
+      <data key="d0">0.1647918696363302</data>
+      <data key="d1">1</data>
+    </edge>
+    <edge source="cB" target="cB">
+      <data key="d0">0.19801130255064292</data>
+      <data key="d1">1</data>
+    </edge>
+    <edge source="theta" target="theta">
+      <data key="d0">0.2012085983113594</data>
+      <data key="d1">1</data>
+    </edge>
+    <edge source="thetaK" target="thetaK">
+      <data key="d0">0.1980858445822653</data>
+      <data key="d1">1</data>
+    </edge>
+  </graph>
+</graphml>

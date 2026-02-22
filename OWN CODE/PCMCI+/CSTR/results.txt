@@ -1,0 +1,403 @@
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\PCMCI_for_CSTR.py:22: DeprecationWarning: bias and ddof have no effect and are deprecated
+  np.corrcoef(np.array([0.0, 1.0]), np.array([1.0, 2.0]), ddof=0)
+Loading csv: cstr_rapid_10.csv
+Data window: warmup=15 (1.5%), requested=985 (98.5%), used=985 / 1001
+Data preprocessing: using raw values (no standardization)
+Auto tau_max from dynamics: ceil(1.5*263.51/36.0) = 11
+Data shape: T=985, N=8
+Lag range: tau_min=0, tau_max=11
+Variables: ['cA', 'cB', 'theta', 'thetaK', 'F', 'QK', 'cA0', 'theta0']
+Using CMIknn independence test
+CMIknn settings: significance=fixed_thres, knn=5, shuffle_neighbors=False
+
+Running PCMCI+ ...
+Rough runtime estimate: ~847.0s (improves after repeated runs)
+
+##
+## Step 1: PC1 algorithm for selecting lagged conditions
+##
+
+Parameters:
+independence test = cmi_knn
+tau_min = 1
+tau_max = 11
+pc_alpha = [0.1]
+max_conds_dim = None
+max_combinations = 1
+
+
+PCMCI+ running [##################--]   38.4s elapsed | ~ 808.6s ETA
+## Resulting lagged parent (super)sets:
+
+    Variable cA has 1 link(s):
+        (cA -1): max_pval = 0.00000, |min_val| =  0.332
+
+    Variable cB has 1 link(s):
+        (cB -1): max_pval = 0.00000, |min_val| =  0.434
+
+    Variable theta has 1 link(s):
+        (theta -1): max_pval = 0.00000, |min_val| =  0.139
+
+    Variable thetaK has 2 link(s):
+        (theta -1): max_pval = 0.00000, |min_val| =  0.213
+        (thetaK -1): max_pval = 0.00000, |min_val| =  0.139
+
+    Variable F has 1 link(s):
+        (F -2): max_pval = 0.00000, |min_val| =  0.112
+
+    Variable QK has 2 link(s):
+        (cB -5): max_pval = 0.00000, |min_val| =  0.108
+        (theta -11): max_pval = 0.00000, |min_val| =  0.105
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+##
+## Step 2: PC algorithm with contemp. conditions and MCI tests
+##
+
+Parameters:
+
+independence test = cmi_knn
+tau_min = 0
+tau_max = 11
+pc_alpha = 0.1
+contemp_collider_rule = majority
+conflict_resolution = True
+reset_lagged_links = False
+max_conds_dim = None
+max_conds_py = None
+max_conds_px = None
+max_conds_px_lagged = None
+fdr_method = none
+PCMCI+ running [###################-]   39.4s elapsed | ~ 807.6s ETA
+## Significant links at alpha = 0.1:
+
+    Variable cA has 1 link(s):
+        (cA -1): pval = 0.00000 | val =  0.332
+
+    Variable cB has 1 link(s):
+        (cB -1): pval = 0.00000 | val =  0.434
+
+    Variable theta has 1 link(s):
+        (theta -1): pval = 0.00000 | val =  0.143
+
+    Variable thetaK has 2 link(s):
+        (theta  0): pval = 0.00000 | val =  0.109
+        (thetaK -1): pval = 0.00000 | val =  0.106
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+## Ambiguous triples (not used for orientation):
+
+    [(thetaK -1), thetaK, theta]
+PCMCI+ finished in 39.5s.
+
+Post-filter: removed all parents into inputs: F, QK, cA0, theta0
+Post-filter: removed all self-links: cA, cB, theta, thetaK, F, QK, cA0, theta0
+
+===== Significant links after cleaning (alpha = 0.100) =====
+
+## Significant links at alpha = 0.1:
+
+    Variable cA has 0 link(s):
+
+    Variable cB has 0 link(s):
+
+    Variable theta has 1 link(s):
+        (thetaK  0): pval = 0.00000 | val =  0.109
+
+    Variable thetaK has 1 link(s):
+        (theta  0): pval = 0.00000 | val =  0.109
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+Building graph for visualization ...
+Number of nodes: 8
+Number of edges: 2
+Significant link table saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph_links.csv
+Graph structure saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.graphml
+
+Graph saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.png
+Done.
+
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR>python PCMCI_for_CSTR.py
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\PCMCI_for_CSTR.py:22: DeprecationWarning: bias and ddof have no effect and are deprecated
+  np.corrcoef(np.array([0.0, 1.0]), np.array([1.0, 2.0]), ddof=0)
+Loading csv: cstr_long.csv
+Data window: warmup=1677 (1.5%), requested=110157 (98.5%), used=110157 / 111835
+Data preprocessing: using raw values (no standardization)
+Auto tau_max from dynamics: ceil(1.5*263.51/36.0) = 11
+Data shape: T=110157, N=8
+Lag range: tau_min=0, tau_max=11
+Variables: ['cA', 'cB', 'theta', 'thetaK', 'F', 'QK', 'cA0', 'theta0']
+Using CMIknn independence test
+CMIknn settings: significance=fixed_thres, knn=5, shuffle_neighbors=False
+
+Running PCMCI+ ...
+Rough runtime estimate: ~1426.6s (improves after repeated runs)
+
+##
+## Step 1: PC1 algorithm for selecting lagged conditions
+##
+
+Parameters:
+independence test = cmi_knn
+tau_min = 1
+tau_max = 11
+pc_alpha = [0.1]
+max_conds_dim = None
+max_combinations = 1
+
+
+PCMCI+ running [##########----------]  475.9s elapsed | ~ 950.7s ETA
+## Resulting lagged parent (super)sets:
+
+    Variable cA has 1 link(s):
+        (cA -1): max_pval = 0.00000, |min_val| =  0.606
+
+    Variable cB has 1 link(s):
+        (cB -1): max_pval = 0.00000, |min_val| =  0.702
+
+    Variable theta has 2 link(s):
+        (theta -1): max_pval = 0.00000, |min_val| =  0.649
+        (theta -11): max_pval = 0.00000, |min_val| =  0.103
+
+    Variable thetaK has 2 link(s):
+        (thetaK -1): max_pval = 0.00000, |min_val| =  0.643
+        (theta -1): max_pval = 0.00000, |min_val| =  0.106
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+##
+## Step 2: PC algorithm with contemp. conditions and MCI tests
+##
+
+Parameters:
+
+independence test = cmi_knn
+tau_min = 0
+tau_max = 11
+pc_alpha = 0.1
+contemp_collider_rule = majority
+conflict_resolution = True
+reset_lagged_links = False
+max_conds_dim = None
+max_conds_py = None
+max_conds_px = None
+max_conds_px_lagged = None
+fdr_method = none
+PCMCI+ running [############--------]  498.1s elapsed | ~ 928.5s ETA
+## Significant links at alpha = 0.1:
+
+    Variable cA has 1 link(s):
+        (cA -1): pval = 0.00000 | val =  0.606
+
+    Variable cB has 1 link(s):
+        (cB -1): pval = 0.00000 | val =  0.729
+
+    Variable theta has 1 link(s):
+        (theta -1): pval = 0.00000 | val =  0.167
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): pval = 0.00000 | val =  0.143
+
+    Variable F has 3 link(s):
+        (cA0  0): pval = 0.00000 | val =  0.330 | unoriented link
+        (QK  0): pval = 0.00000 | val =  0.307 | unoriented link
+        (theta0  0): pval = 0.00000 | val =  0.112 | unoriented link
+
+    Variable QK has 2 link(s):
+        (cA0  0): pval = 0.00000 | val =  0.309 | unoriented link
+        (F  0): pval = 0.00000 | val =  0.307 | unoriented link
+
+    Variable cA0 has 3 link(s):
+        (F  0): pval = 0.00000 | val =  0.330 | unoriented link
+        (QK  0): pval = 0.00000 | val =  0.309 | unoriented link
+        (theta0  0): pval = 0.00000 | val =  0.130 | unoriented link
+
+    Variable theta0 has 2 link(s):
+        (cA0  0): pval = 0.00000 | val =  0.130 | unoriented link
+        (F  0): pval = 0.00000 | val =  0.112 | unoriented link
+PCMCI+ finished in 498.3s.
+
+Post-filter: removed all parents into inputs: F, QK, cA0, theta0
+Post-filter: removed all self-links: cA, cB, theta, thetaK, F, QK, cA0, theta0
+
+===== Significant links after cleaning (alpha = 0.100) =====
+
+## Significant links at alpha = 0.1:
+
+    Variable cA has 0 link(s):
+
+    Variable cB has 0 link(s):
+
+    Variable theta has 0 link(s):
+
+    Variable thetaK has 0 link(s):
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+Building graph for visualization ...
+Number of nodes: 8
+Number of edges: 0
+Significant link table saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph_links.csv
+Graph structure saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.graphml
+
+Graph saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.png
+Done.
+
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR>python PCMCI_for_CSTR.py
+C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\PCMCI_for_CSTR.py:22: DeprecationWarning: bias and ddof have no effect and are deprecated
+  np.corrcoef(np.array([0.0, 1.0]), np.array([1.0, 2.0]), ddof=0)
+Loading csv: cstr_long.csv
+Data window: warmup=1677 (1.5%), requested=110157 (98.5%), used=110157 / 111835
+Data preprocessing: using raw values (no standardization)
+Auto tau_max from dynamics: ceil(5*263.51/36.0) = 37
+Data shape: T=110157, N=8
+Lag range: tau_min=0, tau_max=37
+Variables: ['cA', 'cB', 'theta', 'thetaK', 'F', 'QK', 'cA0', 'theta0']
+Using CMIknn independence test
+CMIknn settings: significance=fixed_thres, knn=5, shuffle_neighbors=False
+
+Running PCMCI+ ...
+Rough runtime estimate: ~4517.6s (improves after repeated runs)
+
+##
+## Step 1: PC1 algorithm for selecting lagged conditions
+##
+
+Parameters:
+independence test = cmi_knn
+tau_min = 1
+tau_max = 37
+pc_alpha = [0.5]
+max_conds_dim = None
+max_combinations = 1
+
+
+PCMCI+ running [################----] 1231.5s elapsed | ~3286.1s ETA
+## Resulting lagged parent (super)sets:
+
+    Variable cA has 1 link(s):
+        (cA -1): max_pval = 0.00000, |min_val| =  0.606
+
+    Variable cB has 1 link(s):
+        (cB -1): max_pval = 0.00000, |min_val| =  0.728
+
+    Variable theta has 1 link(s):
+        (theta -1): max_pval = 0.00000, |min_val| =  0.646
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): max_pval = 0.00000, |min_val| =  0.641
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+##
+## Step 2: PC algorithm with contemp. conditions and MCI tests
+##
+
+Parameters:
+
+independence test = cmi_knn
+tau_min = 0
+tau_max = 37
+pc_alpha = 0.5
+contemp_collider_rule = majority
+conflict_resolution = True
+reset_lagged_links = False
+max_conds_dim = None
+max_conds_py = None
+max_conds_px = None
+max_conds_px_lagged = None
+fdr_method = none
+PCMCI+ running [#######-------------] 1242.6s elapsed | ~3275.0s ETA
+## Significant links at alpha = 0.5:
+
+    Variable cA has 1 link(s):
+        (cA -1): pval = 0.00000 | val =  0.606
+
+    Variable cB has 1 link(s):
+        (cB -1): pval = 0.00000 | val =  0.728
+
+    Variable theta has 1 link(s):
+        (theta -1): pval = 0.00000 | val =  0.646
+
+    Variable thetaK has 1 link(s):
+        (thetaK -1): pval = 0.00000 | val =  0.641
+
+    Variable F has 1 link(s):
+        (cA0  0): pval = 0.00000 | val =  0.899 | unoriented link
+
+    Variable QK has 1 link(s):
+        (cA0  0): pval = 0.00000 | val =  0.863 | unoriented link
+
+    Variable cA0 has 2 link(s):
+        (F  0): pval = 0.00000 | val =  0.899 | unoriented link
+        (QK  0): pval = 0.00000 | val =  0.863 | unoriented link
+
+    Variable theta0 has 0 link(s):
+PCMCI+ finished in 1243.5s.
+
+Post-filter: removed all parents into inputs: F, QK, cA0, theta0
+Post-filter: removed all self-links: cA, cB, theta, thetaK, F, QK, cA0, theta0
+
+===== Significant links after cleaning (alpha = 0.500) =====
+
+## Significant links at alpha = 0.5:
+
+    Variable cA has 0 link(s):
+
+    Variable cB has 0 link(s):
+
+    Variable theta has 0 link(s):
+
+    Variable thetaK has 0 link(s):
+
+    Variable F has 0 link(s):
+
+    Variable QK has 0 link(s):
+
+    Variable cA0 has 0 link(s):
+
+    Variable theta0 has 0 link(s):
+
+Building graph for visualization ...
+Number of nodes: 8
+Number of edges: 0
+Significant link table saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph_links.csv
+Graph structure saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.graphml
+
+Graph saved to C:\Users\lodev\Documents\SCHOOL\KU-LEUVEN DRIVE\sem9\MASTER THESIS\Github\Jacob Runge\Jacob_Runge\PCMCI+\CSTR\cstr_graph.png
+Done.
